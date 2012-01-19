@@ -46,7 +46,7 @@ $ git submodule update --init
 $loader->registerNamespaces(array(
     // ...
     'Hatimeria' => __DIR__.'/../vendor/bundles',
-    'Remotelog' =>  __DIR__.'/../vendor/remotelog/src',
+    'Remotelog' => __DIR__.'/../vendor/remotelog/src',
 ));
 ```
 
@@ -107,9 +107,9 @@ monolog:
             level: debug
 ```
 
-`main` handler will buffer until an `error` level error occur. Then it will send them to `group` handler. It will send errors to strem and remote_biffer
+`main` handler will buffer until an `error` level error occur. Then it will send them to `group` handler. It will send errors to `strem` and `remote_buffer`
 simultaneously. `stream` handler will work as expected streaming all errors, in these case to log file. `remote_buffer` will gather all errors.
-When `remote_buffer` is destroyed it will send all batched errors to `remotelog` server which will POST each error of certain level to configured host.
+When `remote_buffer` is destroyed it will send all batched errors to `remotelog` service which will POST each error of certain level to configured host.
 
 ## Usage
 
