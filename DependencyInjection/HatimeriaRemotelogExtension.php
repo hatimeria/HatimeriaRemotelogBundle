@@ -22,13 +22,15 @@ class HatimeriaRemotelogExtension extends Extension
         }
 
         $builder = $container->getDefinition('remotelog');
+        $container->setParameter("hatimeria_remotelog.cli", $config['cli']);
 
         $level = is_int($config['level']) ? $config['level'] : constant('Monolog\Logger::'.strtoupper($config['level']));
 
         $builder->replaceArgument(0, $config['host']);
         $builder->replaceArgument(1, $config['place']);
         $builder->replaceArgument(2, $config['route']);
-        $builder->replaceArgument(3, $level);
+        $builder->replaceArgument(3, $config['enabled']);
+        $builder->replaceArgument(4, $level);
     }
 
 }

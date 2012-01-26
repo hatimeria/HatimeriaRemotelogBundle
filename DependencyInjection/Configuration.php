@@ -25,6 +25,8 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('place')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('route')->defaultValue('')->end()
                 ->scalarNode('level')->defaultValue('ERROR')->end()
+                ->booleanNode('cli')->defaultTrue()->end()
+                ->booleanNode('enabled')->defaultFalse()->end()
             ->end();
 
         return $treeBuilder;

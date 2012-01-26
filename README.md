@@ -76,6 +76,8 @@ hatimeria_remotelog:
     place: 'Remotelog test enviroment'                   # (required) Some information about project to identify log
     route: '/api/monitoring'                             # If you need you can provide more spcific path (concept)
     level: ERROR                                         # You can define logging level same way as you configure your monolog handler
+    cli: true                                            # Catch cli php errors
+    enabled: false                                       # Send log to monitoring server
 ```
 
 ### Step5: Configure your monolog
