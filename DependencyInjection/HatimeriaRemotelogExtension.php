@@ -21,7 +21,7 @@ class HatimeriaRemotelogExtension extends Extension
             $loader->load(sprintf('%s.xml', $basename));
         }
 
-        $builder = $container->getDefinition('remotelog');
+        $builder = $container->getDefinition('monolog.handler.remotelog');
         $container->setParameter("hatimeria_remotelog.cli", $config['cli']);
 
         $level = is_int($config['level']) ? $config['level'] : constant('Monolog\Logger::'.strtoupper($config['level']));

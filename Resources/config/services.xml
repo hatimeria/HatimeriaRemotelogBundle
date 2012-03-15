@@ -5,12 +5,18 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="remotelog" class="Remotelog\Handler\RemotelogHandler">
+        <service id="monolog.handler.remotelog" class="Remotelog\Handler\RemotelogHandler">
             <argument />
             <argument />
             <argument />
             <argument />
             <argument />
+        </service>
+
+        <service id="monolog.processor.remotelog" class="Hatimeria\RemotelogBundle\Processor\RemotelogProcessor">
+            <argument type="service" id="service_container"/>
+            <tag name="monolog.processor" method="processRecord" handler="remotelog"/>
+            <tag name="kernel.event_listener" event="kernel.response" method="onCoreResponse" priority="666" />
         </service>
     </services>
     
