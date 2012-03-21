@@ -20,6 +20,7 @@ class RemotelogProcessor
         if($this->statusCode) {
             $record['code'] = $this->statusCode;
         }
+        $record['parameters']['post'] = $_POST;
         
         return $record;
     }
