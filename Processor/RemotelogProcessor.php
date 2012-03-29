@@ -2,7 +2,6 @@
 
 namespace Hatimeria\RemotelogBundle\Processor;
 
-
 class RemotelogProcessor
 {
     private $container;
@@ -20,7 +19,30 @@ class RemotelogProcessor
         if($this->statusCode) {
             $record['code'] = $this->statusCode;
         }
-        $record['parameters']['post'] = $_POST;
+        
+        if(!empty($_POST)) {
+            $record['parameters']['post'] = $_POST;
+        }
+        
+        if(!empty($_FILES)) {
+            $record['parameters']['files'] = $_FILES;
+        }
+        
+        if(!empty($_SESSION)) {
+            $record['parameters']['session'] = $_SESSION;
+        }
+        
+        if(!empty($_COOKIE)) {
+            $record['parameters']['cookie'] = $_COOKIE;
+        }        
+
+        if(isset($_SERVER['HTTP_USER_AGENT'])) {
+            $record['parameters']['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+        }
+        
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            $record['parameters']['referer'] = $_SERVER['HTTP_REFERER'];
+        }
         
         return $record;
     }
