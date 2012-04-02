@@ -19,6 +19,10 @@ class HatimeriaRemotelogBundle extends Bundle
     public function handleCliShutdown()
     {
         $c = $this->container;
+        
+        // @todo check if this issue is only in phpunit environment
+        if(!is_object($c)) return;
+        
         if(!$c->getParameter('hatimeria_remotelog.cli')) return;
             
         $error = error_get_last();
