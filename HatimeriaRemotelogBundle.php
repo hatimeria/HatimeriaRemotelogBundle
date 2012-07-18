@@ -31,7 +31,7 @@ class HatimeriaRemotelogBundle extends Bundle
         $message = sprintf('Fatal error: %s in %s on line %s', $error['message'], $error['file'], $error['line']);
 
         try {
-            $log = $c->get('remotelog');
+            $log = $c->get('monolog.handler.remotelog');
             $log->addLog(array(
                 'message' => $message,
                 'type'    => 'CRITICAL'
